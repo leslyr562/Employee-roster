@@ -1,18 +1,18 @@
 const inquirer = require('inquirer');
 const fs = require('fs')
-// const generatePage = require('./template');
-let employees =  [];
-let eemployeeId = 0;
-const questions = [
+const templateData = require('./lib/template');
+let employees = [];
+
+const managerQuestions = [
     {
         type: 'input',
         name: 'name',
-        message: "What is the manager's your name?",
+        message: "Enter manager's name",
         validate: nameInput => {
             if (nameInput) {
                 return true;
             } else {
-                console.log('Please enter your name!');
+                console.log("Please enter manager's name!");
                 return false;
             }
         }
@@ -20,7 +20,7 @@ const questions = [
     {
         type: 'input',
         name: 'id',
-        message: "Enter employees id.",
+        message: "Enter manager's id.",
         validate: idInput => {
             if (idInput) {
                 return true;
@@ -46,23 +46,137 @@ const questions = [
         }
     },
     {
-        type: 'confirm',
-        name: "confirmRole",
-        message: "Would you like to add an engenieer or inter",
-        default: true
-    },
+        type: 'input',
+        name: 'officeNumber',
+        message: "Enter office number",
+        validate: numberInput => {
+            if (numberInput) {
+                return true;
+            } else {
+                console.log('Please enter a valid number');
+                return false;
+            }
+        }
+
+    }
+]
+
+ const employeeQuestions = [
     {
         type: 'list',
         name: 'role',
-        message: 'Choose your nest team member',
-        choices: ["Engineer", "Intern", "Finish"],
-        when: ({ confirmRole }) => confirmRole
-    }
+        message: 'Choose your next team member',
+        choices: ["Engineer", "Intern"],
+    },
+    {
+        type: 'input',
+        name: 'employeeName',
+        message: "Enter employee's name",
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log('Please enter your name!');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'employeeId',
+        message: "Enter employee's id.",
+        validate: idInput => {
+            if (idInput) {
+                return true;
+            } else {
+                console.log('Please enter a valid id');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'engineerEmail',
+        message: "Please enter employee's email address.",
+        validate: function (email) {
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+            if (valid) {
+                return true;
+            } else {
+                console.log("Please enter valid email!")
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your GitHub username',
+        when: function (answers) {
+            return answers.role === "Engineer"
+        }
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: "Please enter inter's school",
+        when: function (answers) {
+            return answers.role === "Intern"
+        }
+    },
+
 ];
+
+const indexQuestions = [
+    {
+        type: 'list',
+        name: "menu",
+        message: "Would you like to add another employee or build your team?",
+        choices: ["Add another employee", "Build a team"]
+    }
+]
 
 function addEmployee() {
     inquirer
-    .prompt(questions);
+        .prompt(employeeQuestions)
+        .then(response => {
+            console.log(response)
+            menu()
+        })
 }
 
-addEmployee();
+function addManager() {
+    inquirer
+    .prompt(managerQuestions)
+    .then(response => {
+        console.log(response)
+        menu();
+    })
+}
+
+function menu() {
+    inquirer
+    .prompt(indexQuestions)
+    .then(response => {
+        console.log(response)
+        if (response.menu === "Add another employee") {
+            addEmployee();
+        } else {
+            buildTeam();
+        }
+    })
+}
+
+function buildTeam() {
+    console.log('build team!')
+    let template = templateData(employees)
+fs.writeFile("./dist/index.html", template, err => {
+    if(err) {
+        console.log(err)
+    }else {
+        console.log('Success! Your team has been created!')
+    }
+})
+}
+
+addManager();
