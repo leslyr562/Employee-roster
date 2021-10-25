@@ -1,13 +1,12 @@
-const { expect } = require('@jest/globals');
 const Intern = require('../lib/Intern')
 
-test('Can get inten object', () => {
+test('Can get intern object', () => {
     const intern = new Intern();
-    expect(typeof(intern)).toBe("object");
+    expect(typeof(intern)).toBe('object');
 });
 
 test("can get inter's school", () => {
-    const school = "Rice",
+    const school = "school";
     const intern = new Intern("John", 123, "test@testing.com", school);
     expect(intern.school).toBe(school)
 })

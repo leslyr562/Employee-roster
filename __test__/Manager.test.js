@@ -1,19 +1,12 @@
-const Employee = require('../lib/Manager')
+const Manager = require("../lib/Manager");
 
-class Manager extends Employee {
-    constructor(name, id, email, officeNumber) {
-        super(name, id, email)
-        this.officeNumber = officeNumber;
-    }
+test("can get the manager object", () => {
+    const manager = new Manager();
+    expect(typeof(manager)).toBe("object");
+});
 
-    get_role() {
-        return "Manager"
-    }
-
-    get_office_number() {
-        return this.officeNumber
-    }
-
-}
-
-module.exports = Manager;
+test("can get the office number of the manager", () => {
+    const officeNumber = "officeNumber";
+    const manager = new Manager("Walter", 123, "test@testing.com", officeNumber);
+    expect(manager.officeNumber).toEqual(officeNumber);
+});

@@ -1,4 +1,3 @@
-const { expect, test } = require('@jest/globals');
 const Engineer = require('../lib/Engineer')
 
 test('Can get the engineer object', () => {
@@ -7,8 +6,8 @@ test('Can get the engineer object', () => {
 });
 
 test("Can get engineer's github", () => {
-    const gitName = "gitname";
-    const engineer = new Engineer("John", 124, "test@testing.com", github);
+    const gitName = "github";
+    const engineer = new Engineer("John", 124, "test@testing.com", gitName);
     expect(engineer.github).toBe(gitName)
 });
 
