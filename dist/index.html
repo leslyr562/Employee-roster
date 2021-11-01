@@ -20,49 +20,41 @@
     <main>
          <div class="container">
             <div class="row mt-2 justify-content-center" id="TeamCards">
+           <div class="card m-2" style="width: 18rem;">
+   <div class="card-body bg-primary text-white">
+     <h5 class="card-title">John</h5>
+     <i class="bi bi-cup-fill"></i>
+     <h5 class="card-title">Manager</h5>
+   </div>
+   <ul class="list-group list-group-flush">
+     <li class="list-group-item">Id: 123</li>
+     <li class="list-group-item">Email: <a href="mailto:john@me.com" class="card-link">john@me.com</a></li>
+     <li class="list-group-item">Office Number: 200</li>
+   </ul>
+   </div><div class="card m-2" style="width: 18rem;">
+   <div class="card-body bg-primary text-white">
+     <h5 class="card-title">Sara</h5>
+     <i class="bi bi-eyeglasses"></i>
+     <h5 class="card-title">Engineer</h5>
+   </div>
+   <ul class="list-group list-group-flush">
+     <li class="list-group-item">Id: 124</li>
+     <li class="list-group-item">Email: <a href="mailto:sarah@me.com" class="card-link">sarah@me.com</a></li>
+     <li class="list-group-item">Github: <a href="https://github.com/sara562" class="card-link">sara562</a></li>
+   </ul>
+   </div><div class="card m-2" style="width: 18rem;">
+   <div class="card-body bg-primary text-white">
+     <h5 class="card-title">Lesly</h5>
+     <i class="bi bi-people"></i>
+     <h5 class="card-title">Intern</h5>
+   </div>
+   <ul class="list-group list-group-flush">
+     <li class="list-group-item">Id: 125</li>
+     <li class="list-group-item">Email: <a href="mailto:lesly@me.com" class="card-link">lesly@me.com</a></li>
+     <li class="list-group-item">School: school</li>
+   </ul>
+   </div>
             </div>
-            () => {
-    `<div class="card m-2" style="width: 18rem;">
-     <div class="card-body bg-primary text-white">
-       <h5 class="card-title">${name}</h5>
-       <i class="bi bi-cup-fill"></i>
-       <h5 class="card-title">Manager</h5>
-     </div>
-     <ul class="list-group list-group-flush">
-       <li class="list-group-item">Id: ${id}</li>
-       <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
-       <li class="list-group-item">Office Number: ${officeNumber}</li>
-     </ul>
-     </div>`
-}
-            () => {
-    return `<div class="card m-2" style="width: 18rem;">
-     <div class="card-body bg-primary text-white">
-       <h5 class="card-title">${name}</h5>
-       <i class="bi bi-eyeglasses"></i>
-       <h5 class="card-title">Engineer</h5>
-     </div>
-     <ul class="list-group list-group-flush">
-       <li class="list-group-item">Id: ${id}</li>
-       <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
-       <li class="list-group-item">Github: <a href="https://github.com/${github}" class="card-link">${github}</a></li>
-     </ul>
-     </div>`
-}
-           () => {
-    return `<div class="card m-2" style="width: 18rem;">
-     <div class="card-body bg-primary text-white">
-       <h5 class="card-title">${name}</h5>
-       <i class="bi bi-people"></i>
-       <h5 class="card-title">Intern</h5>
-     </div>
-     <ul class="list-group list-group-flush">
-       <li class="list-group-item">Id: ${id}</li>
-       <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
-       <li class="list-group-item">School: ${school}</li>
-     </ul>
-     </div>`
-}
          <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
           <!-- CSS only -->

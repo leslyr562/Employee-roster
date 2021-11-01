@@ -6,7 +6,7 @@ test("can get the manager object", () => {
 });
 
 test("can get the office number of the manager", () => {
-    const officeNumber = "officeNumber";
+    const officeNumber = 123;
     const manager = new Manager("Walter", 123, "test@testing.com", officeNumber);
     expect(manager.officeNumber).toEqual(officeNumber);
 });

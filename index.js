@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
-const Employee = require('./lib/Employee')
+const Employee = require('./lib/Employee');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
 const fs = require('fs')
 const templateData = require('./lib/template');
 let employees = [];
@@ -57,20 +60,18 @@ const managerQuestions = [
                 console.log('Please enter a valid number');
                 return false;
             }
-        },
-        when: function (answers) {
-            return answers.role === "Manager"
         }
 
     }
 ]
 
 const employeeQuestions = [
+
     {
         type: 'list',
         name: 'role',
         message: 'Choose your next team member',
-        choices: ["Engineer", "Intern", 'Manager'],
+        choices: ["Engineer", "Intern"],
     },
     {
         type: 'input',
@@ -144,16 +145,23 @@ function addEmployee() {
     inquirer
         .prompt(employeeQuestions)
         .then(response => {
-            console.log(response)
-            menu()
+            if(response.role === "Engineer") {
+                let engineer = new Engineer(response.name, response.id, response.email, response.github);
+                employees.push(engineer);
+            } else {
+                let intern = new Intern(response.name, response.id, response.email, response.school);
+                employees.push(intern);
+            }
+        menu()
         })
-}
+};
 
 function addManager() {
     inquirer
         .prompt(managerQuestions)
         .then(response => {
-            console.log('manager', response)
+            let manager = new Manager(response.name, response.id, response.email, response.officeNumber);
+            employees.push(manager);
             menu();
         })
 }
@@ -162,7 +170,6 @@ function menu() {
     inquirer
         .prompt(indexQuestions)
         .then(response => {
-            console.log('menu', response)
             if (response.menu === "Add another employee") {
                 addEmployee();
             } else {
@@ -174,6 +181,7 @@ function menu() {
 
 function buildTeam() {
     console.log('build team!')
+    console.log(employees)
     let template = templateData(employees)
     fs.writeFile("./dist/index.html", template, err => {
         if (err) {
@@ -187,3 +195,7 @@ function buildTeam() {
 
 
 addManager();
+
+
+
+

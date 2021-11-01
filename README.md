@@ -2,7 +2,8 @@
 
     
 ## Description 
-Employee Roster takes empleyee information and displays it in a team webpage for employer reference. The employee has to inter personal information like name, ID, email, github etc.. to then create a employee profile(section) with their information. 
+Employee Roster takes employee information and displays it in a team webpage for employer reference. The employee has to enter personal information like name, ID, email, github etc.. to then create a employee profile(section) with their information.
+The image down below shows the representation of this projects objective. 
 
 ## Table of Content
 - [Installation](#installation)
@@ -11,12 +12,15 @@ Employee Roster takes empleyee information and displays it in a team webpage for
 - [Questions](#questions)
 
 ## Installations
-The following is neccssary to run this application: Node installation has to be done in order to get this application running.
+The following is necessary to run this application: An "npm install" has to be done in order to get this application running.
 
 ## Usage
-In order to use this app,   .
+This app can be used to keep track of team members in a business.
  
 ## Test
 The following is needed to run the test:
-node index.js has to be called on the terminal once git has been cloned.
+-Node index.js has to be called on the terminal once git has been cloned.
+-Answer all the prompt questions.
+-Open browser to see results. 
     
+<img src="images-employee-roster.png" height: "100">
