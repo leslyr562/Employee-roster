@@ -9,7 +9,6 @@ The image down below shows the representation of this projects objective.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Test](#test)
-- [Questions](#questions)
 
 ## Installations
 The following is necessary to run this application: An "npm install" has to be done in order to get this application running.
