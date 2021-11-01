@@ -23,4 +23,4 @@ The following is needed to run the test:
 -Answer all the prompt questions.
 -Open browser to see results. 
     
-<img src=images-employee-roster.png" height: "100">
+![](images/employee-roster.png)
